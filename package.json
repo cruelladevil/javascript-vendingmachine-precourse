@@ -1,13 +1,15 @@
 {
   "name": "javascript-vendingmachine-precourse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "우아한테크코스 프리코스 자판기 미션",
-  "dependencies": {},
+  "dependencies": {
+    "@woowacourse/mission-utils": "^1.0.6"
+  },
   "devDependencies": {
-    "cypress": "8.7.0"
+    "jest": "^29.0.3"
   },
   "scripts": {
-    "test": "cypress run --browser chrome"
+    "test": "jest --detectOpenHandles --watch"
   },
   "repository": {
     "type": "git",
