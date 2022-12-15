@@ -33,6 +33,10 @@ const InputView = {
       }
     });
   },
+
+  close() {
+    Console.close();
+  },
 };
 
 module.exports = InputView;

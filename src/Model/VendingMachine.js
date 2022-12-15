@@ -18,7 +18,7 @@ class VendingMachine {
 
   initCoins(vendingMachineMoney) {
     this.insertMoney(vendingMachineMoney);
-    this.pickRandomCoins();
+    this.#pickRandomCoins();
   }
 
   insertMoney(money) {
@@ -40,7 +40,7 @@ class VendingMachine {
     }
   }
 
-  pickRandomCoins() {
+  #pickRandomCoins() {
     while (this.#money > 0) {
       const coin = Random.pickNumberInList([500, 100, 50, 10]);
 
