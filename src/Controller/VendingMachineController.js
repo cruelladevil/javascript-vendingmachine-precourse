@@ -36,6 +36,8 @@ class VendingMachineController {
     InputView.readVendingMachineItems((input) => {
       const items = this.convertInputToItems(input);
       this.#vendingMachine.initItems(items);
+
+      this.readUserMoney();
     });
   }
 
@@ -44,6 +46,10 @@ class VendingMachineController {
       const [name, price, amount] = item.slice(1, -1).split(',');
       return [name, Number(price), Number(amount)];
     });
+  }
+
+  readUserMoney() {
+    InputView.readUserMoney((input) => {});
   }
 }
 
