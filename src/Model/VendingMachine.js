@@ -1,8 +1,18 @@
 const { Random } = require('@woowacourse/mission-utils');
 
 class VendingMachine {
-  #coinMap = { 500: 0, 100: 0, 50: 0, 10: 0 };
-  #money = 0;
+  #coinMap;
+  #money;
+
+  constructor() {
+    this.#coinMap = new Map([
+      [500, 0],
+      [100, 0],
+      [50, 0],
+      [10, 0],
+    ]);
+    this.#money = 0;
+  }
 
   initCoins(vendingMachineMoney) {
     this.#money += vendingMachineMoney;
@@ -17,7 +27,7 @@ class VendingMachine {
 
       if (money - coin >= 0) {
         money -= coin;
-        this.#coinMap[coin] += 1;
+        this.#coinMap.set(coin, this.#coinMap.get(coin) + 1);
       }
     }
   }
