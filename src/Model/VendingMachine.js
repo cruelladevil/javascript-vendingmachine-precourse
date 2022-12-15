@@ -60,6 +60,10 @@ class VendingMachine {
     this.#money -= item.getPrice();
     item.chosen();
   }
+
+  getMoney() {
+    return this.#money;
+  }
 }
 
 module.exports = VendingMachine;

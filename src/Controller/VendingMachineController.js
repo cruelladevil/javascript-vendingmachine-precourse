@@ -58,6 +58,7 @@ class VendingMachineController {
   }
 
   readItemNametoBuy() {
+    OutputView.printVendingMachineMoney(this.#vendingMachine.getMoney());
     InputView.readItemNameTobuy((input) => {
       this.#vendingMachine.pickItem(input);
 

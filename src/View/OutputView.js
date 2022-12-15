@@ -10,6 +10,16 @@ const OutputView = {
     Console.print(coinView);
   },
 
+  printVendingMachineMoney(vendingMachineMoney) {
+    const moneyView = OutputView.buildMoneyView(vendingMachineMoney);
+
+    Console.print(moneyView);
+  },
+
+  buildMoneyView(money) {
+    return `\n투입 금액: ${money}원`;
+  },
+
   buildCoinView(coinMap) {
     let coinView = '';
 
