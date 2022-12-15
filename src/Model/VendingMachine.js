@@ -31,6 +31,10 @@ class VendingMachine {
       }
     }
   }
+
+  getCoinMap() {
+    return this.#coinMap;
+  }
 }
 
 module.exports = VendingMachine;

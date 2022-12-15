@@ -1,5 +1,6 @@
 const VendingMachine = require('../Model/VendingMachine');
 const InputView = require('../View/InputView');
+const OutputView = require('../View/OutputView');
 
 class VendingMachineController {
   #vendingMachine;
@@ -16,11 +17,17 @@ class VendingMachineController {
     InputView.readVendingMachineMoney((input) => {
       const vendingMachineMoney = Number(input);
       this.initVendingMachineCoins(vendingMachineMoney);
+      this.printCoinMap();
     });
   }
 
   initVendingMachineCoins(vendingMachineMoney) {
     this.#vendingMachine.initCoins(vendingMachineMoney);
+  }
+
+  printCoinMap() {
+    const coinMap = this.#vendingMachine.getCoinMap();
+    OutputView.printVendingMachineCoins(coinMap);
   }
 }
 
