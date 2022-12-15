@@ -66,14 +66,17 @@ class VendingMachine {
   }
 
   canBuySomeItem() {
-    return this.#items.some((item) => this.#money > item.getPrice());
+    return this.#items.some((item) => this.#money >= item.getPrice());
   }
 
   pickItem(itemName) {
     const item = this.#items.find((item) => itemName === item.getName());
+    const itemPrice = item.getPrice();
 
-    this.#money -= item.getPrice();
-    item.chosen();
+    if (this.#money >= itemPrice) {
+      this.#money -= itemPrice;
+      item.chosen();
+    }
   }
 
   getMoney() {
