@@ -64,6 +64,22 @@ class VendingMachine {
   getMoney() {
     return this.#money;
   }
+
+  returnChange() {
+    const changeCoinMap = new Map();
+
+    this.#coinMap.forEach((count, coin) => {
+      const maxCount = Math.floor(this.#money / coin);
+      const changeCount = maxCount > count ? count : maxCount;
+
+      this.#coinMap.set(coin, this.#coinMap.get(coin) - changeCount);
+      this.#money -= coin * changeCount;
+
+      changeCoinMap.set(coin, changeCount);
+    });
+
+    return changeCoinMap;
+  }
 }
 
 module.exports = VendingMachine;

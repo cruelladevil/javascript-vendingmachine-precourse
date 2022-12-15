@@ -65,9 +65,20 @@ class VendingMachineController {
       if (
         this.#vendingMachine.hasAmountSomeItem() &&
         this.#vendingMachine.canBuySomeItem()
-      )
+      ) {
         this.readItemNametoBuy();
+      } else {
+        this.returnChange();
+      }
     });
+  }
+
+  returnChange() {
+    OutputView.printVendingMachineMoney(this.#vendingMachine.getMoney());
+
+    const changeCoinMap = this.#vendingMachine.returnChange();
+
+    OutputView.printChangeCoins(changeCoinMap);
   }
 }
 
