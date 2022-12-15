@@ -14,8 +14,7 @@ class VendingMachineController {
   }
 
   #readVendingMachineMoney() {
-    InputView.readVendingMachineMoney((input) => {
-      const vendingMachineMoney = Number(input);
+    InputView.readVendingMachineMoney((vendingMachineMoney) => {
       this.#initVendingMachineCoins(vendingMachineMoney);
       this.#printCoinMap();
 
@@ -33,24 +32,15 @@ class VendingMachineController {
   }
 
   #readVendingMachineItems() {
-    InputView.readVendingMachineItems((input) => {
-      const items = this.#convertInputToItems(input);
+    InputView.readVendingMachineItems((items) => {
       this.#vendingMachine.initItems(items);
 
       this.#readUserMoney();
     });
   }
 
-  #convertInputToItems(input) {
-    return input.split(';').map((item) => {
-      const [name, price, amount] = item.slice(1, -1).split(',');
-      return [name, Number(price), Number(amount)];
-    });
-  }
-
   #readUserMoney() {
-    InputView.readUserMoney((input) => {
-      const userMoney = Number(input);
+    InputView.readUserMoney((userMoney) => {
       this.#vendingMachine.insertMoney(userMoney);
 
       this.#readItemNametoBuy();
@@ -59,8 +49,8 @@ class VendingMachineController {
 
   #readItemNametoBuy() {
     OutputView.printVendingMachineMoney(this.#vendingMachine.getMoney());
-    InputView.readItemNameTobuy((input) => {
-      this.#vendingMachine.pickItem(input);
+    InputView.readItemNameTobuy((itemName) => {
+      this.#vendingMachine.pickItem(itemName);
 
       if (
         this.#vendingMachine.hasAmountSomeItem() &&
