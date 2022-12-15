@@ -13,7 +13,14 @@ class VendingMachineController {
   }
 
   readVendingMachineMoney() {
-    InputView.readVendingMachineMoney((input) => {});
+    InputView.readVendingMachineMoney((input) => {
+      const vendingMachineMoney = Number(input);
+      this.initVendingMachineCoins(vendingMachineMoney);
+    });
+  }
+
+  initVendingMachineCoins(vendingMachineMoney) {
+    this.#vendingMachine.initCoins(vendingMachineMoney);
   }
 }
 
