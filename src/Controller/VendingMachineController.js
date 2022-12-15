@@ -18,6 +18,8 @@ class VendingMachineController {
       const vendingMachineMoney = Number(input);
       this.initVendingMachineCoins(vendingMachineMoney);
       this.printCoinMap();
+
+      this.readVendingMachineItems();
     });
   }
 
@@ -28,6 +30,10 @@ class VendingMachineController {
   printCoinMap() {
     const coinMap = this.#vendingMachine.getCoinMap();
     OutputView.printVendingMachineCoins(coinMap);
+  }
+
+  readVendingMachineItems() {
+    InputView.readVendingMachineItems((input) => {});
   }
 }
 
