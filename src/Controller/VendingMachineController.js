@@ -52,7 +52,13 @@ class VendingMachineController {
     InputView.readUserMoney((input) => {
       const userMoney = Number(input);
       this.#vendingMachine.insertMoney(userMoney);
+
+      this.readItemNametoBuy();
     });
+  }
+
+  readItemNametoBuy() {
+    InputView.readItemNameTobuy((input) => {});
   }
 }
 
