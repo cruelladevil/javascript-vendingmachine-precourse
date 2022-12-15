@@ -30,11 +30,9 @@ class VendingMachine {
     if (!Number.isInteger(money)) {
       throw new Error('투입 금액은 정수여야 합니다.');
     }
-
     if (money % 10 !== 0) {
       throw new Error('자판기는 10원 단위로 투입해야 합니다.');
     }
-
     if (money < 100) {
       throw new Error('자판기는 최소 100원 이상 투입해야 합니다.');
     }
