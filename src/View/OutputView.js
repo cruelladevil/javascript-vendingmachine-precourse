@@ -38,6 +38,10 @@ const OutputView = {
     Console.print(changeCoinView);
     Console.close();
   },
+
+  printError(error) {
+    Console.print(`[ERROR]: ${error.message}`);
+  },
 };
 
 module.exports = OutputView;
