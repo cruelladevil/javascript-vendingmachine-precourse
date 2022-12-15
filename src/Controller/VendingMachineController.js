@@ -33,7 +33,17 @@ class VendingMachineController {
   }
 
   readVendingMachineItems() {
-    InputView.readVendingMachineItems((input) => {});
+    InputView.readVendingMachineItems((input) => {
+      const items = this.convertInputToItems(input);
+      this.#vendingMachine.initItems(items);
+    });
+  }
+
+  convertInputToItems(input) {
+    return input.split(';').map((item) => {
+      const [name, price, amount] = item.slice(1, -1).split(',');
+      return [name, Number(price), Number(amount)];
+    });
   }
 }
 

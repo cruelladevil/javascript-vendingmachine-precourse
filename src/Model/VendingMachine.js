@@ -1,8 +1,10 @@
 const { Random } = require('@woowacourse/mission-utils');
+const VendingMachineItem = require('./VendingMachineItem');
 
 class VendingMachine {
   #coinMap;
   #money;
+  #items;
 
   constructor() {
     this.#coinMap = new Map([
@@ -34,6 +36,12 @@ class VendingMachine {
 
   getCoinMap() {
     return this.#coinMap;
+  }
+
+  initItems(items) {
+    this.#items = items.map(
+      ([name, price, amount]) => new VendingMachineItem(name, price, amount),
+    );
   }
 }
 
