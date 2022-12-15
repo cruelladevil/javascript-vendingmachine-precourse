@@ -17,18 +17,20 @@ class VendingMachine {
   }
 
   initCoins(vendingMachineMoney) {
-    this.#money += vendingMachineMoney;
-    this.pickRandomCoins(vendingMachineMoney);
+    this.insertMoney(vendingMachineMoney);
+    this.pickRandomCoins();
   }
 
-  pickRandomCoins(vendingMachineMoney) {
-    let money = vendingMachineMoney;
+  insertMoney(money) {
+    this.#money += money;
+  }
 
-    while (money > 0) {
+  pickRandomCoins() {
+    while (this.#money > 0) {
       const coin = Random.pickNumberInList([500, 100, 50, 10]);
 
-      if (money - coin >= 0) {
-        money -= coin;
+      if (this.#money - coin >= 0) {
+        this.#money -= coin;
         this.#coinMap.set(coin, this.#coinMap.get(coin) + 1);
       }
     }
