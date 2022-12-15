@@ -1,5 +1,11 @@
+const VendingMachineController = require('./Controller/VendingMachineController');
+
 class App {
-  play() {}
+  play() {
+    const vendingMachineController = new VendingMachineController();
+
+    vendingMachineController.run();
+  }
 }
 
 module.exports = App;
