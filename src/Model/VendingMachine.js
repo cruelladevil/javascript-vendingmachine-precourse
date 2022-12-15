@@ -45,6 +45,21 @@ class VendingMachine {
       ([name, price, amount]) => new VendingMachineItem(name, price, amount),
     );
   }
+
+  hasAmountSomeItem() {
+    return this.#items.some((item) => item.hasAmount());
+  }
+
+  canBuySomeItem() {
+    return this.#items.some((item) => this.#money > item.getPrice());
+  }
+
+  pickItem(itemName) {
+    const item = this.#items.find((item) => itemName === item.getName());
+
+    this.#money -= item.getPrice();
+    item.chosen();
+  }
 }
 
 module.exports = VendingMachine;

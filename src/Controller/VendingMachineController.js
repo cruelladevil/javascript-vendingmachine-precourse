@@ -58,7 +58,15 @@ class VendingMachineController {
   }
 
   readItemNametoBuy() {
-    InputView.readItemNameTobuy((input) => {});
+    InputView.readItemNameTobuy((input) => {
+      this.#vendingMachine.pickItem(input);
+
+      if (
+        this.#vendingMachine.hasAmountSomeItem() &&
+        this.#vendingMachine.canBuySomeItem()
+      )
+        this.readItemNametoBuy();
+    });
   }
 }
 
